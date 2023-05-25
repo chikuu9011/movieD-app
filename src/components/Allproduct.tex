@@ -1,0 +1,47 @@
+import React, { Component } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+
+export default class Allproduct extends Component {
+  constructor() {
+    super();
+    this.state = {
+      Apidata: [],
+    };
+  }
+  componentDidMount() {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        this.setState({ Apidata: json });
+      });
+  }
+  componentDidUpdate(prevprops) {
+    if (this.props.ax !== prevprops && this.props.ax !== "") {
+      fetch(`https://fakestoreapi.com/products/category/${this.props.ax}`)
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+          this.setState({ Apidata: json });
+        });}
+    
+  }
+  render() {
+    const VALUE = this.state.Apidata;
+
+    return (
+      <Container>
+        <br />
+        <Row>
+          {VALUE &&
+            VALUE.map((obj) => (
+              <Col className="border" xl={3}>
+                <h4>{obj.price}</h4>
+                <p>{obj.category}</p>
+              </Col>
+            ))}
+        </Row>
+      </Container>
+    );
+  }
+}

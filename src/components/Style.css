@@ -1,0 +1,24 @@
+input{
+    color: black !important;
+}
+body{
+    background-color: #2C3539 !important;
+}
+.movie-data{
+    margin-top: 2rem;
+}
+.movie-data h6{
+    color: white;
+}
+.movie-data >Row{
+    margin-top: 1rem;
+}
+*{
+    color: white;
+}
+.adddetiles{
+    margin-left: 20%;
+}
+.input{
+    color: black !important;
+}
